@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=University
+comment1.params=ranking\ name\ country
+comment1.target=University(int,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=
+comment3.target=int\ getRanking()
+comment4.params=
+comment4.target=java.lang.String\ getName()
+comment5.params=
+comment5.target=java.lang.String\ getCountry()
+comment6.params=ranking
+comment6.target=void\ setRanking(int)
+comment7.params=name
+comment7.target=void\ setName(java.lang.String)
+comment8.params=country
+comment8.target=void\ setCountry(java.lang.String)
+numComments=9
