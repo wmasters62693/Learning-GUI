@@ -85,7 +85,10 @@ public class JavaFX
         Image1.setImage(image);
         Image1.setLayoutX(paddingL);
         Image1.setLayoutY(Gap*6);
-        Image1.setPreserveRatio(true);       
+        Image1.setPreserveRatio(true);
+        Image1.setFitWidth(300);
+        Image1.setFitHeight(300);
+        rootPane.getChildren().add(Image1);
         
     }
     
