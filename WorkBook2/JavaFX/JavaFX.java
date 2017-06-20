@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import java.util.ArrayList;
+import javafx.scene.input.MouseEvent;
 
 
 public class JavaFX
@@ -22,8 +23,10 @@ public class JavaFX
     private static TextField txtFieldName;
     private static TextField txtFieldCountry;
     
+    private static University currentlySelectedUniversity = null;
+    
     //initialising arrayLists
-    private static ListView<University> uniListViewer;
+    private static ListView<University> uniListView;
     private static ArrayList<University> uniArrayList = new ArrayList<University>();
     
     
@@ -94,7 +97,7 @@ public class JavaFX
         btn.setText("Enter");
         btn.setLayoutX(paddingL);
         btn.setLayoutY(Gap*5);
-        btn.setOnAction((ActionEvent ae) -> GetData());
+        btn.setOnAction((ActionEvent ae) -> addUni());
         rootPane.getChildren().add(btn);
         
         //creates a new image, sets the size and location and adds it to the stage
@@ -109,34 +112,56 @@ public class JavaFX
         rootPane.getChildren().add(Image1);
         
         //creates a new list viewer
-        uniListViewer = new ListView<University>();
-        uniListViewer.setLayoutX(300);
-        uniListViewer.setLayoutY(Gap);
-        rootPane.getChildren().add(uniListViewer);
+        uniListView = new ListView<University>();
+        uniListView.setLayoutX(300);
+        uniListView.setLayoutY(Gap);
+        updateUniView();
+        uniListView.setOnMouseClicked((MouseEvent me) -> {
+            currentlySelectedUniversity = uniListView.getSelectionModel().getSelectedItem();
+        });
+        rootPane.getChildren().add(uniListView);
+        
+        //create a new button that removes the selected university from the uniList
+        Button btn2 = new Button();
+        btn2.setText("Remove");
+        btn2.setLayoutX(235);
+        btn2.setLayoutY(Gap*2);
+        btn2.setOnAction((ActionEvent ae) -> removeUni());
+        rootPane.getChildren().add(btn2);
+        
+        
     }
     
-    private static void GetData()
+    private static void addUni()
     {
         //gets whats in the text fields and stores them as variables
         int Rank =(Integer.parseInt(txtFieldRanking.getText()));
         String Name = txtFieldName.getText();
         String Country = txtFieldCountry.getText();
-        // prints the variables
-        //System.out.println(Rank + "  " + Name + " " + Country);
+        
+        //adds the new university to the array list and sorts the array list
         uniArrayList.add(new University(Rank, Name, Country));
-        
-        uniArrayList = Sort.ListSort(uniArrayList);
-        
-        uniListViewer.getItems().clear();
-        
-        
-        
-        for(University uni : uniArrayList)
-        {
-            uniListViewer.getItems().add(uni);
-        }
+               
+        updateUniView();
         
     }
+    
+    public static void removeUni()
+    {
+        uniArrayList.remove(currentlySelectedUniversity);
+        updateUniView();
+    }
+    
+        private static void updateUniView()
+    {
+        uniListView.getItems().clear();
+                        
+        for(University uni : uniArrayList)
+        {
+            uniListView.getItems().add(uni);
+        }
+    }
+    
     //function that when called outputs "bye bye!" to the console and exits the program
     private static void terminate()
     {

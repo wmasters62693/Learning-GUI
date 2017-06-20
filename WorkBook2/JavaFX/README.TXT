@@ -10,6 +10,3 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
-
-
-https://docs.google.com/document/d/1XSyMC00l4-vDw2L9UjmLZOCgd973-aSgyoI4z030Er8/edit
