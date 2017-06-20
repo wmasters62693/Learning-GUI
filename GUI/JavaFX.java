@@ -1,3 +1,4 @@
+//importing all the required 
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.stage.Stage;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 
 public class JavaFX
 {
+    //initialising variables that are used in more than one function
     private static TextField txtFieldRanking;
     private static TextField txtFieldName;
     private static TextField txtFieldCountry;
@@ -33,6 +35,7 @@ public class JavaFX
     
     private static void initialiseGUI()
     {
+        //creates a new Stage, names it, sets it so it cant be resized, declares the size and sets it so that when you exit it calls the function terminate 
         Stage stage = new Stage();
         stage.setTitle("My First GUI");
         stage.setResizable(false);
@@ -44,14 +47,17 @@ public class JavaFX
         stage.setTitle("Top Universitys By William Masters");
         stage.show();
         
+        // creating variables to help with positioning of future items
         int paddingL = 30;
         int Gap = 30;
         
+        //creates a new label and adds it to the stage
         Label label = new Label("Enter details of topUniversitys");
         label.setLayoutX(30);
         label.setLayoutY(Gap);
         rootPane.getChildren().add(label);
         
+        //creates a new text field when the user can input data, sets the size and location and adds it to the stage
         txtFieldRanking = new TextField();
         txtFieldRanking.setLayoutX(paddingL);
         txtFieldRanking.setLayoutY(Gap*2);
@@ -59,6 +65,7 @@ public class JavaFX
         txtFieldRanking.setPromptText("Enter Ranking");
         rootPane.getChildren().add(txtFieldRanking);
         
+        //creates a new text field when the user can input data, sets the size and location and adds it to the stage
         txtFieldName = new TextField();
         txtFieldName.setLayoutX(paddingL);
         txtFieldName.setLayoutY(Gap*3);
@@ -66,6 +73,7 @@ public class JavaFX
         txtFieldName.setPromptText("Enter Name");
         rootPane.getChildren().add(txtFieldName);
         
+        //creates a new text field when the user can input data, sets the size and location and adds it to the stage
         txtFieldCountry = new TextField();
         txtFieldCountry.setLayoutX(paddingL);
         txtFieldCountry.setLayoutY(Gap*4);
@@ -73,6 +81,7 @@ public class JavaFX
         txtFieldCountry.setPromptText("Enter Country");
         rootPane.getChildren().add(txtFieldCountry);
         
+        //creates a new button, sets the size, location and to call the function GetData when the button is clicked on
         Button btn = new Button();
         btn.setText("Enter");
         btn.setLayoutX(paddingL);
@@ -80,6 +89,7 @@ public class JavaFX
         btn.setOnAction((ActionEvent ae) -> GetData());
         rootPane.getChildren().add(btn);
         
+        //creates a new image, sets the size and location and adds it to the stage
         Image image = new Image ("GitHub.jpg");
         ImageView Image1 = new ImageView();
         Image1.setImage(image);
@@ -94,13 +104,15 @@ public class JavaFX
     
     private static void GetData()
     {
+        //gets whats in the text fields and stores them as variables
         String Rank = txtFieldRanking.getText();
         String Name = txtFieldName.getText();
         String Country = txtFieldCountry.getText();
+        // prints the variables
         System.out.println(Rank + "  " + Name + " " + Country);
         
     }
-    
+    //function that when called outputs "bye bye!" to the console and exits the program
     private static void terminate()
     {
         System.out.println("bye bye!");
